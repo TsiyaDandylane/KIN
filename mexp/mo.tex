@@ -1,0 +1,249 @@
+\documentclass[16pt]{article}
+\usepackage{ctex}
+\usepackage{tikz}
+\usepackage{amsmath, amsfonts}
+
+\usepackage{scalefnt}
+
+\scalefont{2}
+
+\newcommand{\mo}{
+	\mathord{
+		\tikz[scale=0.31,baseline=1.3pt]{
+			\draw[thick]  (0,0.188)--(0,1.1);
+			\draw[thick] (0,0.205)arc(180:318.2:0.203);
+			\draw[thick] (-0.2,0.82)--(0.11,0.82);
+			\draw[thick] (0.1,0.82)arc(90:-90:0.1);
+			\draw[thick] (0.1,0.62)--(-0.15,0.62);
+			\draw[thick] (0.1,0.62)arc(90:-90:0.1);
+			\draw[thick] (0.11,0.42)--(-0.2,0.42);
+		}
+	}
+}
+
+
+\newcommand{\xm}{
+	\mathord{
+		\tikz[scale=0.25,baseline={(0,-0.03)}]{
+			\draw (-0.3,0.3)--(-0.3,0);
+			\draw (-0.3,0)--(0,0.3);
+			\draw (0,0.3)--(0,0);
+			\draw (0,0)--(0.3,0.3);
+			\draw (0.3,0.3)--(0.3,-0.6);
+			\draw (0.05,-0.2)--(0.55,-0.2);
+			\fill (-0.3,0)circle(0.023);
+			\fill (0,0.3)circle(0.023);
+			\fill (0,0)circle(0.023);
+			\fill (0.3,0.3)circle(0.023);
+		}
+	}
+}
+
+
+\newcommand{\xc}{
+	\mathord{
+		\tikz[scale=0.4,baseline={(0,0.06)}]{
+			\draw (0.115,0.396)--(0,0.42);
+			\draw (0,0.42)arc(90:325:0.15);
+			\draw (0,0.26)--(0,-0.07);
+			\fill (0,0.42)circle(0.017);
+			
+		}
+	}
+}
+
+\newcommand{\he}{
+	\ 
+	\mathord{
+		\tikz[scale=0.3, baseline={(0,-0.1)}]{
+			\draw plot[smooth] coordinates{
+				(0.05,0.5) (-0.2,0.07) (0.03,-0.15)
+			};
+			
+			\draw plot[smooth] coordinates{
+				(-0.05,-0.5) (0.2,-0.07) (-0.03,0.15)
+			};
+		}
+	}
+	\ 
+}
+
+
+\begin{document}
+	\setlength{\abovedisplayskip}{0pt}
+	\setlength{\belowdisplayskip}{0pt}
+	\setlength{\abovedisplayshortskip}{0pt}
+	\setlength{\belowdisplayshortskip}{0pt}
+	\begin{align*}
+		Y_n &= 10c_n + X_n\\
+		c_{n+1} &= Y_n \% k\\
+		m_{n+1} &= \lfloor Y_n / k \rfloor
+	\end{align*}
+	\begin{center}
+		定义$\mo^{c_0}_{X_n}(k)$为m的循环节长度mo\\
+	\end{center}
+	
+	\vspace{4em}
+	\textbf{一. $X_n$为常数X}
+	\begin{align*}
+		X_n &= X\\
+		\mo^{c_0}_{X_n}(k) &= \mo^{c_0}_{X}(k)
+	\end{align*}
+	\begin{center}
+		默认 $\mo(k) = \mo^0_1(k)$  \hspace{1em} (即上0下1)\\
+		那么$\mo_{9}(k)$为小数循环节长度
+	\end{center}
+	
+	\vspace{16pt}
+	\textbf{1.}
+	\vspace{-16pt}
+	\[ k = 2^{x}5^{y}d_1^{y_1}d_2^{y_2} \cdots d_n^{y_n} \] 
+	\[ \mo^{c_0}_{X}(k) = lcm(\mo^{c_0}_{X}(d_1^{y_1}), \mo^{c_0}_{X}(d_2^{y_2}),\cdots,\mo^{c_0}_{X}(d_n^{y_n})) \]
+	\[ d_n\text{为素数}\]
+	
+	\vspace{16pt}
+	\textbf{2.}
+	\vspace{-16pt}
+	\[ \text{当} \hspace{1em} n \leq h \]
+	\[ \mo(p^n) = \mo(p) \]
+	\[ \text{当} \hspace{1em} n > h \] 
+	\[ \mo(p^n) = p^{n-h}\mo(p) \]
+	\[ (p\neq2 \cap p\neq5 \hspace{1em} \text{若等，则$h=\infty$}) \]
+	\[ \text{绝大多数情况下，}h=1 \]
+	\hspace{4em}seg.
+	\vspace{-16pt}
+	\[ \mo(487^2) = \mo(487) = 486 \neq \mo(487^3) \] 
+	\[ \text{此时} h=2 \]
+	
+	\vspace{16pt}
+	\textbf{3.}
+	\vspace{-16pt}
+	\[ \mo_X(k) = \mo_{X\%k}(k) \]
+	
+	\vspace{16pt}
+	\textbf{4.}
+	\vspace{-16pt}
+	\[ \mo_X(k) = \mo(k/gcd(k,X)) \]
+	
+	\vspace{16pt}
+	\textbf{5.}
+	\vspace{-16pt}
+	\[ \mo^{c_0}_{X}(k) = \mo_{X+9c_0}(k) \]
+	
+	
+	\vspace{4em}
+	\textbf{二.$X_n$为$m_n$}
+	
+	\[ X_{n} = m_{n} \]
+	\[ \mo^{c_0}_{X_n}(k) = \mo^{c_0}_{m_n(m_0=m_0)}(k) \]
+	\[ \text{简记为} \hspace{1em} \mo^{c_0}_{\xm m_0}(k) \]
+	\[ \text{那么当} \hspace{1em} c_0 = 0 \hspace{1em} 0<m_0<10 \hspace{1em} m_0 \in N \text{时} \]
+	\[ \mo_{\xm m_0}(k) \text{为k的以}m_0\text{开头的魔术数循环节长度} \]  
+	
+	\vspace{16pt}
+	\textbf{1.}
+	\vspace{-16pt}
+	\begin{align*}
+		\mo^{c_0}_{\xm m_0}(k) &= \mo^{10c_0}_{9m_0}(10k-1)\\
+		&= \mo_{9Y_0}(10k-1)\\
+		&= \mo((10k-1)/gcd((10k-1),9Y_0))
+	\end{align*}
+	
+	\vspace{4em}
+	\textbf{三.$X_n$为$(E-10)c_n$}
+	\[ \mo^{c_0}_{X_n}(k) = \mo^{c_0}_{(u-10)c_n}(k) \]
+	\[ \text{简记为} \hspace{1em} \mo^{c_0}_{\xc u} \hspace{1em}(\mo \text{式可用$l$简写})\]
+	\[ \text{那么} \hspace{1em} u^l \equiv 1 \hspace{1em} (mod \hspace{6pt} k) \]
+	
+	\vspace{16pt}
+	\textbf{1.}
+	\vspace{-16pt}
+	\begin{align*}
+		\mo^{c_0}_{\xc 10}(k) &= \mo^{c_0}_0(k)\\
+		&= \mo_{9c_0}(k)\\
+		&= \mo(k/gcd(k,9c_0))
+	\end{align*}
+	
+	\vspace{16pt}
+	\textbf{2.}
+	\vspace{-16pt}    
+	\[ k = p_1^{q_1}p_2^{q_2} \cdots p_n^{q_n} \prod d(u) \] 
+	\[ \mo^{c_0}_{\xc u}(k) = lcm(\mo^{c_0}_{\xc u}(p_1^{q_1}), \mo^{c_0}_{\xc u}(p_2^{q_2}),\cdots,\mo^{c_0}_{\xc u}(p_n^{q_n})) \]
+	\[ p_n\text{为素数} \cap p_n \notin d(u) \hspace{1em} (d(u)\text{为u的因子}) \]
+	
+	\vspace{16pt}
+	\textbf{3.}
+	\vspace{-16pt}
+	\[ \mo^{c_0}_{\xc u}(k) = \mo^{c_0}_{\xc u\%k}(k) \]
+	
+	\vspace{16pt}
+	\textbf{4.}
+	\vspace{-16pt}
+	\[ \mo^{c_0}_{\xc u}(k) = \mo^1_{\xc u}(k/gcd(k,c_0)) \]
+	
+	\vspace{16pt}
+	\textbf{5.}
+	\vspace{-16pt}
+	\[ \text{当} \hspace{1em} n \leq h \]
+	\[ \mo^1_{\xc u}(p^n) = \mo^1_{\xc u}(p) \]
+	\[ \text{当} \hspace{1em} n > h \] 
+	\[ \mo^1_{\xc u}(p^n) = p^{n-h}\mo^1_{\xc u}(p) \]
+	\[ \text{当} \hspace{1em} \mo^1_{\xc u}(p) = 1 \]
+	\[ u-1 = p^h a \]
+	\[ \text{当} \hspace{1em} \mo^1_{\xc u}(p) = 2 \]
+	\[ u+1 = p^h a \]
+	
+	\vspace{16pt}
+	\textbf{6.}
+	\vspace{-16pt}
+	\[ \mo^1_{\xc u}(k) = \mo^1_{\xc u^n}(k) \cdot gcd(n,\mo^1_{\xc u}(k)) \]
+	
+	
+	\vspace{16pt}
+	\textbf{7.}
+	\vspace{-16pt}
+	\[ \mo^1_{\xc u}(p) \he \mo^1_{\xc p-u}(p) \]
+	\[ x \overset{t}{\scriptstyle \he} y \text{表示：若t的素因子及幂全等包含于x中} \]
+	\[ \text{即} \hspace{1em} gcd(x,t) \text{刚好等于1} \]
+	\[ \text{那么} \hspace{1em} y = d(x) \]
+	\[ \text{否则} \hspace{1em} y = \dfrac{xt}{gcd(x,t)} \]
+	\[ \he \text{默认为}\overset{2}{\scriptstyle \he} \text{且d(x)为x/2,不取其它因} \]
+	
+	\vspace{16pt}
+	\textbf{8.}
+	\vspace{-16pt}
+	\[ \mo^1_{\xc d}(p) \he \mo^1_{\xc \tfrac{p-1}{d}}(p) \]
+	\[ (d = d(p-1))\]
+	
+	\vspace{16pt}
+	\textbf{9.}
+	\vspace{-16pt}
+	\[ \text{由7和8知}\]
+	\[ \mo^1_{\xc p-d}(p) = \mo^1_{\xc \tfrac{p-1}{d}}(p) \]
+	
+	\vspace{16pt}
+	\textbf{10.}
+	\vspace{-16pt}
+	\[ \mo^1_{\xc d}(k) = \mo^1_{\xc \frac{k+1}{d}}(k) \]
+	
+	\vspace{16pt}
+	\textbf{11.}
+	\vspace{-16pt}
+	\[ \mo^1_{\xc p}(2p+1) = \begin{cases}p, p \equiv 1 (mod 4) \\ 2p, p\equiv 3 (mod 4) \end{cases} \]
+	
+	\vspace{16pt}
+	\textbf{12.}
+	\vspace{-16pt}
+	\[ \mo^{c_0}_{X \xc u}(k) = \mo_{X + (u-1)c_0 \xc u}(k) \]
+	
+	\vspace{16pt}
+	\textbf{13.}
+	\vspace{-16pt}
+	\[ \mo^{c_0}_{X \xc u}(k) = \mo^{c_0 + X/gcd(u-1,X)}_{\xc u}(k\cdot(u-1)/gcd(u-1,X)) \]
+	
+	\vspace{4em}
+	\textbf{???}
+	\vspace{-16pt}
+	\[ \mo^1_{\xc u}(p) \overset{d}{ \he} \mo^1_{\xc \overset{t}{\scriptstyle \he}u}(p) \]
+	
+\end{document}
