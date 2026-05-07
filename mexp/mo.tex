@@ -68,6 +68,22 @@
 	\ 
 }
 
+\newcommand{\tanta}{
+	\mathord{
+		\tikz[scale=0.3, baseline={(0,-0.1)}]{
+			\draw plot[smooth] coordinates{
+				(-0.4,0) (-0.35,0.23) (0.03,0.8)
+			};
+			
+			\draw plot[smooth] coordinates{
+				(0.4,0) (0.35,-0.23) (-0.03,-0.8)
+			};
+			\draw (-0.2,0) circle [radius=0.2];
+			\draw (0.2,0) circle [radius=0.2];
+			
+		}			
+	}
+}
 
 \begin{document}
 	\setlength{\abovedisplayskip}{0pt}
@@ -184,13 +200,13 @@
 	\vspace{16pt}
 	\textbf{5.}
 	\vspace{-16pt}
-	\[ \text{当} \hspace{1em} n \leq h \]
-	\[ \mo^1_{\xc u}(p^n) = \mo^1_{\xc u}(p) \]
-	\[ \text{当} \hspace{1em} n > h \] 
-	\[ \mo^1_{\xc u}(p^n) = p^{n-h}\mo^1_{\xc u}(p) \]
-	\[ \text{当} \hspace{1em} \mo^1_{\xc u}(p) = 1 \]
-	\[ u-1 = p^h a \]
-	\[ \text{当} \hspace{1em} \mo^1_{\xc u}(p) = 2 \]
+	\[ \text{当} \hspace{1em} n \leq h \]\\
+	\[ \mo^1_{\xc u}(p^n) = \mo^1_{\xc u}(p) \]\\
+	\[ \text{当} \hspace{1em} n > h \] \\
+	\[ \mo^1_{\xc u}(p^n) = p^{n-h}\mo^1_{\xc u}(p) \]\\
+	\[ \text{当} \hspace{1em} \mo^1_{\xc u}(p) = 1 \]\\
+	\[ u-1 = p^h a \]\\
+	\[ \text{当} \hspace{1em} \mo^1_{\xc u}(p) = 2 \]\\
 	\[ u+1 = p^h a \]
 	
 	\vspace{16pt}
@@ -245,5 +261,77 @@
 	\textbf{???}
 	\vspace{-16pt}
 	\[ \mo^1_{\xc u}(p) \overset{d}{ \he} \mo^1_{\xc \overset{t}{\scriptstyle \he}u}(p) \]
+	
+	\[ \mo^{c_0}_{X \xc u}(k) = \mo_{X+(u-1)c_0 \xc u}(k) \]
+	\vspace{1em}
+	\[ \mo^{c_0}_{X \xc u}(k) = \mo^{c_0 + X / gcd(u-1,X)}_{\xc u}(k \cdot (u-1)/gcd(u-1,X))\]
+	
+	\vspace{1em}
+	\[ \mo^{c_0}_{\xm m_0 \xc u}(k) = \mo^{m_0}_{\xm c_0 \xc k}(u)\]
+	
+	\vspace{1em}
+	\[ \mo^{1}_{\xc d}(k) = \mo^{1}_{\xc \frac{k+1}{d}}(k) \]
+	
+	\vspace{1em}
+	\[ \mo^1_{\xc d}(p) \he \mo^1_{\xc \tfrac{p-1}{d}}(p) \]
+	
+		\[ \mo^{c_0}_{X \xm m_0 \xc u}(k) \]
+	\[ \tanta \]
+	\[ c_0 \]
+	
+	\[ \mo^{1}_{\xc u}(u^v + 1)=2v \]
+	
+	\[ w_n = e^{\frac{2\pi j}{n}} = cos(\frac{2\pi}{n}+j sin(\frac{2\pi}{n})) \]
+	
+	\[ U=P^{-1}AP\]
+	
+	\[
+	A = 
+	\begin{pmatrix}
+		w_{n_1} &        &        & 	   \\
+		& w_{n_2} &        & 	   \\
+		&        & \ddots &        \\
+		&        &        & w_{n_i}
+	\end{pmatrix}
+	\]
+	
+	\[ \mo^{E}_{\xc U}(\tanta) = \mo^{E}_{\xc U} = lcm(n_1, n_2, ... , n_i)\]
+	
+	\[
+	C_o = 
+	\begin{pmatrix}
+		c_{1} & c_{2} & \cdots & c_{n} \\
+		c_{n+1} & c_{n+2} & \cdots & c_{2n} \\
+		\vdots & \vdots & \ddots & \vdots \\
+		c_{n^2-n+1} & c_{n^2-n+2} & \cdots & c_{n^2}
+	\end{pmatrix}
+	\]
+	
+	\[
+	U = 
+	\begin{pmatrix}
+		u & u & \cdots & u  \\
+		u & u & \cdots & u  \\
+		\vdots & \vdots & \ddots & \vdots \\
+		u & u & \cdots & u
+	\end{pmatrix}
+	\]
+	
+	\[ \mo^{1}_{\xc u}(13) = l\]
+	
+	\[ \mo^{C_o}_{\xc U}(k) = lcm(\mo^{u\sum^{n}_{i=1}c_i}_{\xc nu}(k),\mo^{u\sum^{2n}_{i=n+1}c_i}_{\xc nu}(k),...,\mo^{u\sum^{n^2}_{i=n^2-n+1}c_i}_{\xc nu}(k))\]
+	
+	%	\[ \mo^{c_0}_{X \xc u}(k) = \mo_{X+(u-1)c_0 \xc u}(k) \]
+	%	\vspace{1em}
+	%	\[ \mo^{c_0}_{X \xc u}(k) = \mo^{c_0 + X / gcd(u-1,X)}_{\xc u}(k \cdot (u-1)/gcd(u-1,X))\]
+	
+	%	\vspace{1em}
+	%	\[ \mo^{c_0}_{\xm m_0 \xc u}(k) = \mo^{m_0}_{\xm c_0 \xc k}(u)\]
+	
+	%	\vspace{1em}
+	%	\[ \mo^{1}_{\xc d}(k) = \mo^{1}_{\xc \frac{k+1}{d}}(k) \]
+	
+	%	\vspace{1em}
+	%	 \[ \mo^1_{\xc d}(p) \he \mo^1_{\xc \tfrac{p-1}{d}}(p) \]
 	
 \end{document}
